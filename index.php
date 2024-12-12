@@ -14,7 +14,8 @@ echo "hiiiiiiiiiiiiiii :3 <br>";
 $db= new Database();
 //iegut bloga ierakstus
 $posts=$db->query("SELECT * FROM posts");
-
+//  $comments = $db->query("SELECT * FROM comments");
+//  $user = $db->query("SELECT * FROM users WHERE usetId = $id");
 dd($posts);
 //API foreach
 
