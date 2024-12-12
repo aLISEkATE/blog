@@ -1,16 +1,23 @@
 <?php
 
 class Database {
-    public function query($sql){
 
-       
+    public $pdo;
+
+    public function __construct(){
+
         $dsn= "mysql:host=localhost;port=3306;user=root;password=;dbname=blog_alise;charset=utf8mb4;";
 
-        $pdo = new PDO($dsn);
+        $this->pdo = new PDO($dsn);
+        //PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC
+        $this->pdo->setAttribute(19,2);
+    }
 
-        $statement= $pdo->prepare($sql);
+    public function query($sql){
+
+        $statement= $this->pdo->prepare($sql);
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $statement;
 }
 
 
