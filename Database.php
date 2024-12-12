@@ -4,13 +4,12 @@ class Database {
 
     public $pdo;
 
-    public function __construct(){
-
-        $dsn= "mysql:host=localhost;port=3306;user=root;password=;dbname=blog_alise;charset=utf8mb4;";
-
+    public function __construct($config){
+        //data source nam
+        $dsn="mysql:" . http_build_query($config,"",";");
+        // "mysql:host=localhost;port=3306;user=root;password=;dbname=blog_alise;charset=utf8mb4;";
         $this->pdo = new PDO($dsn);
-        //PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC
-        $this->pdo->setAttribute(19,2);
+        $this->pdo->setAttribute(19,2); //PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC
     }
 
     public function query($sql){

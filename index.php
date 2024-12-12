@@ -1,6 +1,8 @@
 <?php
 require "functions.php";
 require "Database.php";
+$config= require("config.php");
+
 echo "hiiiiiiiiiiiiiii :3 <br>";
 
 
@@ -11,7 +13,7 @@ echo "hiiiiiiiiiiiiiii :3 <br>";
     //host, lietotajvards, parole, ports, DB nosaukums
     // data source name
 
-$db= new Database();
+$db= new Database($config["database"]);
     //iegut bloga ierakstus
 $posts=$db->query("SELECT * FROM posts")->fetchAll();
 
@@ -20,6 +22,12 @@ $posts=$db->query("SELECT * FROM posts")->fetchAll();
     //$db->query("INSERT INTO posts ...");
 
 dd($posts);
+
+echo "<ol>";
+foreach($data as $x){ 
+echo"<li>" . $x["content"] . "</li>";
+} 
+echo "</ol>";
 //API foreach
 
 ?>
