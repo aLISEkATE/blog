@@ -14,7 +14,7 @@ echo "<h1>Skibidi toilet</h1><br>";
 
 $db= new Database($config["database"]);
     //iegut bloga ierakstus
-$posts=$db->query("SELECT * FROM posts")->fetchAll();
+
 
     //$comments = $db->query("SELECT * FROM comments")->fetchAll(PDO::FETCH_ASSOC);
     //$user = $db->query("SELECT * FROM users WHERE usetId = $id")->fetch(PDO::FETCH_ASSOC);
@@ -22,17 +22,28 @@ $posts=$db->query("SELECT * FROM posts")->fetchAll();
 //meklesanas forma
 //POST- maina datus
 //GET- nemaina, tiaki jaiegust dati
+
+$sql = "SELECT * FROM posts";
+$params= [];
 if(isset($_GET["search_query"])&&$_GET["search_query"]!=""){
-//meklesanas logika
-dd("SELECT * FROM posts WHERE content LIKE '" . $_GET['search_query'] . "';")
-$posts=$db->query("SELECT * FROM posts WHERE content LIKE " . $_GET["search_query"])->fetchAll();
+//meklesanas logik
+$search_query= "%" . $_GET["search_query"] . "%";
+$sql .=" WHERE content LIKE :search_query";
+$params=["search_query" => $search_query];
 };
+
+$posts = $db->query($sql, $params)->fetchAll();
 
 echo"<form>";
 echo "<input name='search_query'/>";
 echo "<button>Meklēt</button>";
 echo"</form>";
-dd($posts);
+
+echo "<ul>";
+foreach($posts as $x){ 
+echo"<li>" . $x["content"] . "</li>";
+} 
+echo "</ul>";
 
 
 //API foreach
