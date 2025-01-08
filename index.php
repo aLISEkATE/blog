@@ -2,14 +2,10 @@
 
 require "functions.php";
 require "Database.php";
+
 $config= require("config.php");
 
-echo "<h1>Skibidi toilet</h1><br>";
-
-//merkis: izveidot ierakstu meekletaju
-//1. Izveidot html formu ar input, submit pogu.
-//2. PHP lietas
-//3. Ozveidot vaicajumu uz db
+//echo "<h1>Blogs</h1><br>";
 
 
 $db= new Database($config["database"]);
@@ -34,18 +30,6 @@ $params=["search_query" => $search_query];
 
 $posts = $db->query($sql, $params)->fetchAll();
 
-echo"<form>";
-echo "<input name='search_query'/>";
-echo "<button>Meklēt</button>";
-echo"</form>";
-
-echo "<ul>";
-foreach($posts as $x){ 
-echo"<li>" . $x["content"] . "</li>";
-} 
-echo "</ul>";
-
-
-//API foreach
+require "views/index.view.php";
 
 ?>
