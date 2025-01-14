@@ -1,25 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Blogs</h1><br>
+<?php require "components/header.php"; ?>
+<?php require "components/navbar.php"; ?>
+
+<h1>Blogs</h1>
 
 <form>
-<input name='search_query' value="<?=$_GET["search_query"] ?? ""?>"/>
-<button>Meklēt</button>
+    <input name='search' value='<?= $_GET["search"] ?? "" ?>'/>
+    <button>Search</button>
 </form>
 
-<ul>
-
 <?php
-foreach($posts as $x){ ?>
-    <li> <?= $x["content"]?> </li> 
-<?php } ?>
 
-</ul>
-</body>
-</html>
+if (count($posts) == 0) {
+    echo "0 results found";
+}
+?>
+
+<ul>
+ <?php foreach($posts as $x) { ?>
+    <li> <?= $x['content'] ?> </li>
+<?php } ?>
+</ul>  
+
+
+
+<?php require "components/footer.php"; ?>
+
+

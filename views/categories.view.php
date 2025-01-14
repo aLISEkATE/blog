@@ -1,34 +1,18 @@
+<?php require "components/header.php"; ?>
+<?php require "components/navbar.php"; ?>
 
+<h1>Categories</h1>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-<h1>Categories</h1><br>
- <form>
- <input name='search_query' value="<?=$_GET["search_query"] ?? ""?>"/>
-<button>Meklēt</button>
+<form>
+    <input name='search' value='<?= $_GET["search"] ?? "" ?>'/>
+    <button>Search</button>
 </form>
 
 <ul>
-
-<?php
-foreach($posts as $x){ ?>
-    <li> <?= $x["category_name"]?> </li> 
+ <?php foreach($posts as $x) { ?>
+    <li> <?= $x['category_name'] ?> </li>
 <?php } ?>
+</ul>  
 
-</ul>   
-</body>
-</html>
-
-
-
-
-
-
-
+<?php require "components/footer.php"; ?>
 
