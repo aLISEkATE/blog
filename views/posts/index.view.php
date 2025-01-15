@@ -17,7 +17,7 @@ if (count($posts) == 0) {
 
 <ul>
  <?php foreach($posts as $x) { ?>
-    <a href="show?id=<?= $x["id"]?>"><li> <?= $x['content'] ?> </a></li>
+    <a href="show?id=<?= $x["id"]?>"><li> <?= htmlspecialchars($x["content"]) ?> </a></li>
 <?php } ?>
 </ul>  
 

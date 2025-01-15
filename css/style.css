@@ -12,3 +12,10 @@ header {
     list-style-type: none;
     padding: 7px 10px;
  }
+ @font-face {
+   font-family: 'meow'; /*a name to be used later*/
+   src: url('css/fonts/"Fill me with Color - OTF.otf"'); /*URL to font*/
+}
+  body {background-color: hotpink;
+font-family:"meow";
+}
