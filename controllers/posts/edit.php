@@ -21,4 +21,4 @@ if (empty($errors)) {
 
 
 $pageTitle = "Izveidot jaunu ierakstu";
-require "views/posts/create.view.php"; ?>
+require "views/posts/edit.view.php"; ?>

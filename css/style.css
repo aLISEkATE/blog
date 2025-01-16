@@ -14,8 +14,18 @@ header {
  }
  @font-face {
    font-family: 'meow'; /*a name to be used later*/
-   src: url('css/fonts/"Fill me with Color - OTF.otf"'); /*URL to font*/
+   src: url("Fill me with Color - OTF.otf"); /*URL to font*/
 }
-  body {background-color: hotpink;
-font-family:"meow";
+  body {
+background-color: hotpink;
+font-family:Arial, Helvetica, sans-serif;
+text-align:center;
+
+}
+li{
+   list-style-type: none;
+}
+
+.error_msg{
+   color:red;
 }
