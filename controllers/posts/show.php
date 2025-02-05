@@ -8,6 +8,6 @@ if (!isset($_GET["id"]) || $_GET["id"] == ""){
 if(!$post){
     redirectIfNotFound(); 
 }
-
+//help
 require "views/posts/show.view.php"
 ?>

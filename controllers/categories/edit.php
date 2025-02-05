@@ -1,8 +1,6 @@
 <?php 
 require "Validator.php";
 
-
-
 if (!isset($_GET["id"]) || $_GET["id"] == ""){
   redirectIfNotFound();
 }
@@ -12,33 +10,29 @@ if (!isset($_GET["id"]) || $_GET["id"] == ""){
 if(!$post){
     redirectIfNotFound(); 
 }
-$sql = "SELECT * FROM categories";
-$params = [];
-$categories = $db->query($sql, $params)->fetchAll();
+
 $errors = [];
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    if(!Validator::string($_POST["content"],max: 50)){
-  $errors["content"] = "Saturam jābūt ievadītam, bet ne garākam par 50 rakstzīmēm";
+    if(!Validator::string($_POST["category_name"],max: 50)){
+  $errors["category_name"] = "Saturam jābūt ievadītam, bet ne garākam par 50 rakstzīmēm";
 }
 if (empty($errors)) {
   $sql = "  
-    UPDATE posts
-    SET content = :content,
-    category_id = :category_id
+    UPDATE categories
+    SET category_name = :category_name
     WHERE id = :id;";
     $params = [
-      "content" => $_POST["content"],
-      "category_id" => $_POST["category_id"],
+      "category_name" => $_POST["category_name"],
       "id" => $_POST["id"]
   ];
  
 
   $db->query($sql, $params); 
-  header("Location: /"); exit();}
+  header("Location: /categories"); exit();}
    }{ 
 };
 
 
 $pageTitle = "Izveidot jaunu ierakstu";
-require "views/posts/edit.view.php"; ?>
+require "views/categories/edit.view.php"; ?>

@@ -19,12 +19,14 @@ if(!Validator::number($_GET["id"])){
 }
 if (empty($errors)) {
   $sql = "  
-    DELETE FROM posts
+    DELETE FROM categories
     WHERE id = :id;";
     $params = ["id" => $_GET["id"]];
   $db->query($sql, $params); 
   header("Location: /"); exit();
   }
   ;
+
+header("Location: /"); exit();
 
 $pageTitle = "DELETE";?>

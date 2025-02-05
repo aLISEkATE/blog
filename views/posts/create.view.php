@@ -8,7 +8,14 @@
        <p class="error_msg"><?= $errors["content"] ?></p>
      <?php } ?>    
 <input name="content"  value="<?= $_POST['content']  ?? "" ?>"/></label>
-    <button>Search</button>
+    <button>Create</button>
+    <br>
+
+<select name="category_id">
+    <?php foreach($categories as $x) { ?>
+    <option  value="<?= $x["id"]?>"><?= htmlspecialchars($x["category_name"]) ?></option>
+    <?php } ?>
+</select>
 </form>
 
 
